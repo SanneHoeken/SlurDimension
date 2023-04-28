@@ -1,0 +1,6 @@
+Argies;Argentinians
+beaners;Hispanic people
+gooks;Asian people
+injuns;Native Americans
+limeys;British people
+pakis;Pakistanis
