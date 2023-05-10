@@ -4,8 +4,7 @@ def create_dimension(input_path, output_path, wordpairs_file, method, sample=Non
 
     # Get list of wordpairs
     with open(wordpairs_file, 'r') as infile:
-        lines = [x.replace('\n', '') for x in infile.readlines()] 
-        word_pairs = [tuple(line.split('\t')[0].split(';')) for line in lines] 
+        word_pairs = [tuple(x.replace('\n', '').split(';')) for x in infile.readlines()]
 
     with open(input_path, 'rb') as infile:
         embeddings = pickle.load(infile)

@@ -4,11 +4,14 @@ from tqdm import tqdm
 
 def extract_representations(model_name, input_path, output_path, layer_selection, layer_aggregation):
 
+    print('Extract representations...')
     # Load input_data
     with open(input_path, 'r') as infile:
         reader = csv.DictReader(infile)
         data = [dic for dic in reader]
 
+    keywords = list(set([post['keyword'] for post in data]))
+    
     # Load model
     model = AutoModel.from_pretrained(model_name, output_hidden_states=True)
     model.eval()
@@ -25,10 +28,13 @@ def extract_representations(model_name, input_path, output_path, layer_selection
         keyword_ids = [int(i) for i in post['keyword_encoded'].split(', ')]
 
         # Get indexes of keyword ids in encoded post
+        found = False
         for i in range(len(subwords_ids)):
-            if subwords_ids[i:i+len(keyword_ids)] == keyword_ids:
-                start_idx = i
-                end_idx = i+len(keyword_ids)
+            if not found:
+                if subwords_ids[i:i+len(keyword_ids)] == keyword_ids:
+                    start_idx = i
+                    end_idx = i+len(keyword_ids)
+                    found = True
 
         # feed post text to the model    
         input_ids = torch.tensor([subwords_ids])
@@ -56,4 +62,3 @@ def extract_representations(model_name, input_path, output_path, layer_selection
     
     with open(output_path, 'wb') as outfile:
         pickle.dump(embeddings, outfile)
-    

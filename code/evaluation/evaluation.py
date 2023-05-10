@@ -113,13 +113,16 @@ def evaluate(experiment2files, gold_file, output_file, level, correlation, print
 if __name__ == '__main__':
     
     # FILES
-    experiment2files = {'random_nouns': ['../../output/projections/1-15slurs_cohyponym/hatexplain_randomnouns_projection_values.csv']}
+    experiment2files = {
+                        'persons': [f'../../output/projections/1-15slurs_cohyponym/1-15slurs_cohyponym_run{i}-hatexplain_persons-projections.csv' for i in range(10)],
+                        'random nouns': [f'../../output/projections/1-15slurs_cohyponym/1-15slurs_cohyponym_run{i}-hatexplain_randomnouns-projections.csv' for i in range(10)]
+                        }
     gold_file = '../../data/hatexplain/hatexplain_nouns_rationales.csv'
-    output_file = ''
+    output_file = '../../output/evaluations/1-15slurs_cohyponym/randomnouns-performance.csv'
 
     # SETTINGS
     level = 'token'
     correlation = True
-    print_as_latex = False
+    print_as_latex = True
 
     evaluate(experiment2files, gold_file, output_file, level, correlation, print_as_latex)
