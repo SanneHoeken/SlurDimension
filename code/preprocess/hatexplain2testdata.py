@@ -77,8 +77,8 @@ def convert_data(dataset_file, data_outputfile, rationale_outputfile, freq_thres
 if __name__ == '__main__':
 
     freq_thres = 10
-    dataset_file = '../../../Data/HateXplain/HateXplain.json'
-    rationale_outputfile = '../../data/hatexplain/HateXplain_nouns_rationales.csv'
-    data_outputfile = '../../data/hatexplain/HateXplain_data_modified.csv'
+    dataset_file = 'HateXplain.json'
+    rationale_outputfile = '../data/hatexplain/HateXplain_nouns_rationales.csv'
+    data_outputfile = '../data/hatexplain/HateXplain_data_modified.csv'
 
     convert_data(dataset_file, data_outputfile, rationale_outputfile, freq_thres)

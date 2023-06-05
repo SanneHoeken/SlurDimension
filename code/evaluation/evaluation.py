@@ -114,11 +114,10 @@ if __name__ == '__main__':
     
     # FILES
     experiment2files = {
-                        'persons': [f'../../output/projections/1-15slurs_cohyponym/1-15slurs_cohyponym_run{i}-hatexplain_persons-projections.csv' for i in range(10)],
-                        'random nouns': [f'../../output/projections/1-15slurs_cohyponym/1-15slurs_cohyponym_run{i}-hatexplain_randomnouns-projections.csv' for i in range(10)]
+                        'experiment': ['']
                         }
-    gold_file = '../../data/hatexplain/hatexplain_nouns_rationales.csv'
-    output_file = '../../output/evaluations/1-15slurs_cohyponym/randomnouns-performance.csv'
+    gold_file = ''
+    output_file = ''
 
     # SETTINGS
     level = 'token'
